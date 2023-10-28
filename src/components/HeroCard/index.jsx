@@ -11,8 +11,26 @@ function HeroCard({ hero }) {
     return combatPower;
   };
 
+  const monitorarClique = (e) => {
+    if (localStorage.getItem('hero1') === null) {
+      armazenarNoLocalStorageHero1(e);
+    } else {
+      armazenarNoLocalStorageHero2(e);
+    }
+  };
+
+  const armazenarNoLocalStorageHero1 = (e) => {
+    e.preventDefault();
+    localStorage.setItem('hero1', JSON.stringify(hero));
+  };
+
+  const armazenarNoLocalStorageHero2 = (e) => {
+    e.preventDefault();
+    localStorage.setItem('hero2', JSON.stringify(hero));
+  };
+
   return (
-    <section className="hero-card">
+    <section id="hero-card" className="hero-card" onClick={(e) => monitorarClique(e)}>
       <img src={images.sm} alt={name} className="card__image" />
       <div className="card__infos">
         <h2 className="card__name">{name}</h2>

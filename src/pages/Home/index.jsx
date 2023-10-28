@@ -1,9 +1,12 @@
+import React from 'react';
 import './styles.css';
+import Header from '../../components/Header';
 
 function Home() {
   return (
     <div className="container-main">
-      <h1>Hero's Journey</h1>
+      <Header />
+      <h1>Hero Journey</h1>
     </div>
   );
 }

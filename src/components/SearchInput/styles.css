@@ -3,12 +3,11 @@ form {
 }
 
 .search-input {
+  width: 280px;
+  padding: 8px 35px;
   background-color: #000;
+  color: #FFF;
+  font-size: 0.875rem;
   border: 2px solid blue;
   border-radius: 20px;
-  padding: 5px;
-}
-
-.search-input::placeholder {
-  color: #FFF;
 }

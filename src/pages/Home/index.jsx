@@ -17,12 +17,18 @@ function Home() {
 
       setAllHeroes([...response.data]);
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
     }
   }
 
   function handleOpenModal() {
     setOpenModal(true);
+  }
+
+  function handleCloseModal() {
+    localStorage.removeItem('hero1');
+    localStorage.removeItem('hero2');
+    setOpenModal(false);
   }
 
   useEffect(() => {
@@ -36,10 +42,6 @@ function Home() {
         <SearchInput searchHero={searchHero} setSearchHero={setSearchHero} />
       </section>
 
-      <div>
-        <button type="button" onClick={() => handleOpenModal()}>Abrir Modal</button>
-      </div>
-
       <section className="heroes-container">
         {
           allHeroes.filter((hero) => {
@@ -47,10 +49,10 @@ function Home() {
             const searchHeroLowerCase = searchHero.toLocaleLowerCase();
             const heroNameFilter = heroNameLowerCase.includes(searchHeroLowerCase);
             return heroNameFilter;
-          }).map((hero) => <HeroCard key={hero.id} hero={hero} />)
+          }).map((hero) => <HeroCard key={hero.id} hero={hero} handleOpenModal={() => handleOpenModal()} />)
         }
       </section>
-      <Modal openModal={openModal} handleCloseModal={() => setOpenModal(false)} />
+      <Modal openModal={openModal} handleCloseModal={() => handleCloseModal()} />
     </div>
   );
 }

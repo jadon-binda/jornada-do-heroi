@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css';
 import propTypes from 'prop-types';
 
-function HeroCard({ hero }) {
+function HeroCard({ hero, handleOpenModal }) {
   const { images, name, powerstats } = hero;
 
   const sumPowerstats = () => {
@@ -27,6 +27,7 @@ function HeroCard({ hero }) {
   const armazenarNoLocalStorageHero2 = (e) => {
     e.preventDefault();
     localStorage.setItem('hero2', JSON.stringify(hero));
+    handleOpenModal();
   };
 
   return (

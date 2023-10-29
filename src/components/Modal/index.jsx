@@ -1,17 +1,45 @@
 import { Backdrop, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
-import FolderIcon from '@mui/icons-material/Folder';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import React from 'react';
 import { ModalHero, ContainerHeroes, HabilityHero, ContainerHeroImage } from './styles.jsx';
 import propTypes from 'prop-types';
 
 function Modal({ openModal, handleCloseModal }) {
 
-  function generate(element) {
-    return [0, 1, 2, 3, 4, 5].map((value) =>
-      React.cloneElement(element, {
-        key: value,
-      }),
-    );
+  const arrayNumbers = [0, 1, 2, 3, 4, 5];
+  const abilities = ['intelligence', 'strength', 'speed', 'durability', 'power', 'combat'];
+  const heroOneInfo = JSON.parse(localStorage.getItem('hero1'));
+  const heroTwoInfo = JSON.parse(localStorage.getItem('hero2'));
+
+  function sumPowerStatsHeroOne() {
+    const { intelligence, strength, speed, durability, power, combat } = heroOneInfo.powerstats;
+    const powerStatsHeroOne = intelligence + strength + speed + durability + power + combat;
+    return powerStatsHeroOne;
+  }
+
+  function sumPowerStatsHeroTwo() {
+    const { intelligence, strength, speed, durability, power, combat } = heroTwoInfo.powerstats;
+    const powerStatsHeroTwo = intelligence + strength + speed + durability + power + combat;
+    return powerStatsHeroTwo;
+  }
+
+  function combat(sum1, sum2) {
+    if (sum1 > sum2) {
+      return heroOneInfo.name;
+    } else {
+      return heroTwoInfo.name;
+    }
+  }
+
+  function firstLetterCapitalize(word) {
+    let newWord;
+    const firstLetter = word[0].toUpperCase();
+    newWord = firstLetter;
+    for (let i = 1; i < word.length; i++) {
+      newWord += word[i];
+    }
+    return newWord;
   }
 
   return (
@@ -25,57 +53,57 @@ function Modal({ openModal, handleCloseModal }) {
           <ModalHero>
 
             <Typography variant="h3" align="center" mb={5}>
-              Winner nomeDoHerói
+              Winner {combat(sumPowerStatsHeroOne(), sumPowerStatsHeroTwo())}
             </Typography>
 
             <ContainerHeroes>
 
               <ContainerHeroImage>
-                <img src="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/38-aquaman.jpg" alt="heroi" />
+                <img src={heroOneInfo.images.sm} alt="heroi" />
                 <Typography variant="subtitle1">
-                  Nome do Herói
+                  {heroOneInfo.name}
                 </Typography>
               </ContainerHeroImage>
 
               <Grid container>
                 <Grid item sx={{ width: '100%' }}>
                   <List sx={{ padding: 4 }}>
-                    {generate(
-                      <ListItem sx={{ padding: 0 }}>
 
+                    {arrayNumbers.map((number) =>
+                      <ListItem sx={{ padding: 0 }} key={number.toString()} value={number}>
                         <HabilityHero>
                           <ListItemText
-                            primary="100"
+                            primary={heroOneInfo.powerstats[abilities[number]]}
                           />
                           <ListItemIcon sx={{ minWidth: 24 }}>
-                            <FolderIcon />
+                            <ArrowDropUpIcon sx={{ color: 'green' }} />
                           </ListItemIcon>
                         </HabilityHero>
 
                         <ListItemText
-                          primary="Habilidade"
+                          primary={firstLetterCapitalize(abilities[number])}
                           sx={{ textAlign: 'center' }}
                         />
 
                         <HabilityHero>
                           <ListItemIcon sx={{ minWidth: 24 }}>
-                            <FolderIcon />
+                            <ArrowDropDownIcon sx={{ color: 'red' }} />
                           </ListItemIcon>
                           <ListItemText
-                            primary="100"
+                            primary={heroTwoInfo.powerstats[abilities[number]]}
                           />
                         </HabilityHero>
 
-                      </ListItem>,
+                      </ListItem>
                     )}
                   </List>
                 </Grid>
               </Grid>
 
               <ContainerHeroImage>
-                <img src="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/156-captain-marvel.jpg" alt="heroi" />
+                <img src={heroTwoInfo.images.sm} alt="heroi" />
                 <Typography variant="subtitle1" align="right">
-                  Nome do Herói
+                  {heroTwoInfo.name}
                 </Typography>
               </ContainerHeroImage>
 

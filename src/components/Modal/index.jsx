@@ -1,8 +1,6 @@
 import { Backdrop, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import React from 'react';
-import { ModalHero, ContainerHeroes, HabilityHero, ContainerHeroImage } from './styles.jsx';
+import { ModalHero, ContainerHeroes, HabilityHero, ContainerHeroImage, ArrowDropUpIconGreen, ArrowDropDownIconRed } from './styles.jsx';
 import propTypes from 'prop-types';
 
 function Modal({ openModal, handleCloseModal }) {
@@ -76,7 +74,9 @@ function Modal({ openModal, handleCloseModal }) {
                             primary={heroOneInfo.powerstats[abilities[number]]}
                           />
                           <ListItemIcon sx={{ minWidth: 24 }}>
-                            <ArrowDropUpIcon sx={{ color: 'green' }} />
+                            {heroOneInfo.powerstats[abilities[number]] > heroTwoInfo.powerstats[abilities[number]]
+                              ? <ArrowDropUpIconGreen />
+                              : <ArrowDropDownIconRed />}
                           </ListItemIcon>
                         </HabilityHero>
 
@@ -87,7 +87,9 @@ function Modal({ openModal, handleCloseModal }) {
 
                         <HabilityHero>
                           <ListItemIcon sx={{ minWidth: 24 }}>
-                            <ArrowDropDownIcon sx={{ color: 'red' }} />
+                            {heroTwoInfo.powerstats[abilities[number]] > heroOneInfo.powerstats[abilities[number]]
+                              ? <ArrowDropUpIconGreen />
+                              : <ArrowDropDownIconRed />}
                           </ListItemIcon>
                           <ListItemText
                             primary={heroTwoInfo.powerstats[abilities[number]]}

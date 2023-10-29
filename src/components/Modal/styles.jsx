@@ -1,5 +1,7 @@
 import { Box, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 export const ModalHero = styled(Box)({
   width: '90%',
@@ -25,4 +27,12 @@ export const HabilityHero = styled('div')({
   display: 'flex',
   alignItems: 'center',
   columnGap: 5,
+});
+
+export const ArrowDropUpIconGreen = styled(ArrowDropUpIcon)({
+  color: 'green',
+});
+
+export const ArrowDropDownIconRed = styled(ArrowDropDownIcon)({
+  color: 'red',
 });

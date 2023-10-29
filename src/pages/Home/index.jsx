@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header';
 import HeroCard from '../../components/HeroCard';
+import Modal from '../../components/Modal';
 import SearchInput from '../../components/SearchInput';
 import api from '../../services/api';
 import './styles.css';
@@ -8,6 +9,7 @@ import './styles.css';
 function Home() {
   const [allHeroes, setAllHeroes] = useState([]);
   const [searchHero, setSearchHero] = useState('');
+  const [openModal, setOpenModal] = useState(false);
 
   async function loadHeroes() {
     try {
@@ -17,6 +19,10 @@ function Home() {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  function handleOpenModal() {
+    setOpenModal(true);
   }
 
   useEffect(() => {
@@ -29,6 +35,11 @@ function Home() {
       <section className="search-container">
         <SearchInput searchHero={searchHero} setSearchHero={setSearchHero} />
       </section>
+
+      <div>
+        <button type="button" onClick={() => handleOpenModal()}>Abrir Modal</button>
+      </div>
+
       <section className="heroes-container">
         {
           allHeroes.filter((hero) => {
@@ -39,6 +50,7 @@ function Home() {
           }).map((hero) => <HeroCard key={hero.id} hero={hero} />)
         }
       </section>
+      <Modal openModal={openModal} handleCloseModal={() => setOpenModal(false)} />
     </div>
   );
 }

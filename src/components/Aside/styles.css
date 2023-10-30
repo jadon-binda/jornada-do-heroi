@@ -1,0 +1,25 @@
+.side-bar {
+  width: 100%;
+  max-width: 170px;
+  min-height: 100%;
+  background-color: black;
+  color: lightgray;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar__content {
+  position: sticky;
+  top: 30px;
+}
+
+.sidebar__userinfo {
+  margin-bottom: 135px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 8px;
+  text-transform: uppercase;
+}

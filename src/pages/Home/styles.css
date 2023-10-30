@@ -1,16 +1,16 @@
 .container-main {
   min-height: 100vh;
   background-color: #0d0d0d;
+  display: flex;
 }
 
 .heroes-container {
   width: 100%;
-  max-width: 1200px;
-  padding: 100px 20px 50px;
+  padding: 100px 40px 50px;
   display: flex;
-  justify-content: center;
+  align-items: flex-start;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 60px;
 }
 
 .search-container {

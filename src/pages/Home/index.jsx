@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Aside from '../../components/Aside';
 import HeroCard from '../../components/HeroCard';
 import Modal from '../../components/Modal';
 import SearchInput from '../../components/SearchInput';
@@ -36,10 +37,7 @@ function Home() {
 
   return (
     <div className="container-main">
-      <section className="search-container">
-        <SearchInput searchHero={searchHero} setSearchHero={setSearchHero} />
-      </section>
-
+      <Aside />
       <section className="heroes-container">
         {
           allHeroes.filter((hero) => {
@@ -49,6 +47,9 @@ function Home() {
             return heroNameFilter;
           }).map((hero) => <HeroCard key={hero.id} hero={hero} handleOpenModal={() => handleOpenModal()} />)
         }
+      </section>
+      <section className="search-container">
+        <SearchInput searchHero={searchHero} setSearchHero={setSearchHero} />
       </section>
       <Modal openModal={openModal} handleCloseModal={() => handleCloseModal()} />
     </div>

@@ -37,7 +37,7 @@ function Home() {
 
   return (
     <div className="container-main">
-      <Aside />
+      <Aside showBack />
       <section className="heroes-container">
         {
           allHeroes.filter((hero) => {

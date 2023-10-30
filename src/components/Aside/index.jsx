@@ -1,6 +1,8 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { styled } from '@mui/material';
+import propTypes from 'prop-types';
 import React from 'react';
+import BackButton from '../BackButton';
 import CardsButton from '../CardsButton';
 import './styles.css';
 
@@ -11,10 +13,14 @@ const AccountCircleIconStyled = styled(AccountCircleIcon)({
   backgroundColor: 'black'
 });
 
-function Aside() {
+function Aside({ showBack }) {
+
   return (
     <aside className="side-bar">
       <div className="sidebar__content">
+        {showBack &&
+          <BackButton />
+        }
         <div className="sidebar__userinfo">
           <AccountCircleIconStyled />
           <h2>Jadon</h2>
@@ -26,3 +32,7 @@ function Aside() {
 }
 
 export default Aside;
+
+Aside.propTypes = {
+  showBack: propTypes.bool,
+}.isRequired;

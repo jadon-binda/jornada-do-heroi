@@ -2,6 +2,7 @@ import RocketIcon from '@mui/icons-material/Rocket';
 import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CardBtn = styled(Button)(({
   width: 150,
@@ -14,8 +15,16 @@ const CardBtn = styled(Button)(({
 }));
 
 function CardsButton() {
+  const navigate = useNavigate();
+
   return (
-    <CardBtn variant="contained" startIcon={<RocketIcon />}>Cartas</CardBtn>
+    <CardBtn
+      variant="contained"
+      startIcon={<RocketIcon />}
+      onClick={() => navigate('/home')}
+    >
+      Cartas
+    </CardBtn>
   );
 }
 

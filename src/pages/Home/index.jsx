@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../../components/Header';
 import HeroCard from '../../components/HeroCard';
 import Modal from '../../components/Modal';
 import SearchInput from '../../components/SearchInput';
@@ -17,7 +16,7 @@ function Home() {
 
       setAllHeroes([...response.data]);
     } catch (error) {
-      console.log(error.response);
+      console.log(error);
     }
   }
 
@@ -37,7 +36,6 @@ function Home() {
 
   return (
     <div className="container-main">
-      <Header />
       <section className="search-container">
         <SearchInput searchHero={searchHero} setSearchHero={setSearchHero} />
       </section>

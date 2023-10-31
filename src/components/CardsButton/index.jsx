@@ -7,11 +7,11 @@ import { useNavigate } from 'react-router-dom';
 const CardBtn = styled(Button)(({
   width: 150,
   padding: '6px 25px',
-  justifyContent: 'flex-start',
-  columnGap: 3,
   backgroundColor: 'royalblue',
   borderRadius: 10,
   textTransform: 'capitalize',
+  justifyContent: 'flex-start',
+  columnGap: 3,
 }));
 
 function CardsButton() {

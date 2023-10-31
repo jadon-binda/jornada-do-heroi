@@ -17,7 +17,6 @@ const UserName = styled(Typography)({
   fontFamily: '\'Patrick Hand SC\', cursive',
   fontSize: '1.5rem',
   fontWeight: 700,
-  color: 'rgba(211, 211, 211, 0.8)',
 });
 
 function Aside({ showBack }) {

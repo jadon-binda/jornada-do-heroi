@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 import React from 'react';
 import { PiSwordFill } from 'react-icons/pi';
-import './styles.css';
+import styles from './styles.module.css';
 
 function HeroCard({ hero, handleOpenModal }) {
   const { images, name, powerstats } = hero;
@@ -66,19 +66,19 @@ function HeroCard({ hero, handleOpenModal }) {
   return (
     <section
       id="hero-card"
-      className="hero-card"
+      className={styles.heroCard}
       onClick={(e) => monitorarClique(e)}
       style={cardColor(sumPowerStats())}
     >
       <img
         src={images.sm}
         alt={name}
-        className="card__image"
+        className={styles.heroImage}
         style={cardShadow(sumPowerStats())}
       />
-      <div className="card__infos">
-        <h2 className="card__name">{name}</h2>
-        <h2 className="card__power"><PiSwordFill />{sumPowerStats()}</h2>
+      <div className={styles.heroInfos}>
+        <h2 className={styles.heroName}>{name}</h2>
+        <h2 className={styles.heroPower}><PiSwordFill />{sumPowerStats()}</h2>
       </div>
     </section>
   );

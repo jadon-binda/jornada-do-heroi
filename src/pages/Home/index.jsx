@@ -3,7 +3,6 @@ import Aside from '../../components/Aside';
 import Heroes from '../../components/Heroes';
 import Modal from '../../components/Modal';
 import SearchInput from '../../components/SearchInput';
-import './styles.css';
 
 function Home() {
   const [searchHero, setSearchHero] = useState('');
@@ -23,9 +22,7 @@ function Home() {
     <div className="container-main">
       <Aside showBack />
       <Heroes searchHero={searchHero} handleOpenModal={handleOpenModal} />
-      <section className="search-container">
-        <SearchInput searchHero={searchHero} setSearchHero={setSearchHero} />
-      </section>
+      <SearchInput searchHero={searchHero} setSearchHero={setSearchHero} />
       <Modal openModal={openModal} handleCloseModal={() => handleCloseModal()} />
     </div>
   );

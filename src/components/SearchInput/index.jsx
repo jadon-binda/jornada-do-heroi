@@ -5,16 +5,18 @@ import './styles.css';
 
 function SearchInput({ searchHero, setSearchHero }) {
   return (
-    <form>
-      <Search sx={{ position: 'absolute', top: '7px', left: '8px', color: 'whitesmoke' }} />
-      <input
-        type="search"
-        name="search-input"
-        className="search-input"
-        value={searchHero}
-        onChange={(event) => setSearchHero(event.target.value)}
-      />
-    </form>
+    <div className="container-search">
+      <form>
+        <Search sx={{ position: 'absolute', top: '12px', left: '18px', color: 'whitesmoke' }} />
+        <input
+          type="search"
+          name="search-input"
+          className="search-input"
+          value={searchHero}
+          onChange={(event) => setSearchHero(event.target.value)}
+        />
+      </form>
+    </div>
   );
 }
 

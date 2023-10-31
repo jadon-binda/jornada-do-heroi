@@ -12,15 +12,15 @@ const ContainerHeroes = styled(Stack)({
 
 const MainTitle = styled(Typography)({
   fontFamily: '\'Patrick Hand SC\', cursive',
-  fontWeight: 500,
-  color: 'lightgray',
+  fontStyle: 'italic',
+  color: 'rgba(211, 211, 211, 0.8)',
   textTransform: 'uppercase',
 });
 
 function ContentMain() {
   return (
     <ContainerHeroes>
-      <img src={Herois} alt="herois" />
+      <img src={Herois} alt="herois" style={{ width: 880 }} />
       <MainTitle variant="h1">
         Jornada do Herói
       </MainTitle>

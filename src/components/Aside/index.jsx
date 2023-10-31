@@ -1,5 +1,5 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { styled } from '@mui/material';
+import { Typography, styled } from '@mui/material';
 import propTypes from 'prop-types';
 import React from 'react';
 import BackButton from '../BackButton';
@@ -13,6 +13,13 @@ const AccountCircleIconStyled = styled(AccountCircleIcon)({
   backgroundColor: 'black'
 });
 
+const UserName = styled(Typography)({
+  fontFamily: '\'Patrick Hand SC\', cursive',
+  fontSize: '1.5rem',
+  fontWeight: 700,
+  color: 'rgba(211, 211, 211, 0.8)',
+});
+
 function Aside({ showBack }) {
 
   return (
@@ -23,7 +30,7 @@ function Aside({ showBack }) {
         }
         <div className="sidebar__userinfo">
           <AccountCircleIconStyled />
-          <h2>Jadon</h2>
+          <UserName variant="h2">Jadon</UserName>
         </div>
         <CardsButton />
       </div>

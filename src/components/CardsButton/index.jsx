@@ -1,7 +1,7 @@
-import RocketIcon from '@mui/icons-material/Rocket';
 import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import React from 'react';
+import { BiSolidPlanet } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 
 const CardBtn = styled(Button)(({
@@ -20,7 +20,7 @@ function CardsButton() {
   return (
     <CardBtn
       variant="contained"
-      startIcon={<RocketIcon />}
+      startIcon={<BiSolidPlanet />}
       onClick={() => navigate('/home')}
     >
       Cartas

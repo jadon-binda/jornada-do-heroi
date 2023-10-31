@@ -20,7 +20,6 @@ const UserName = styled(Typography)({
 });
 
 function Aside({ showBack }) {
-
   return (
     <aside className="side-bar">
       <div className="sidebar__content">

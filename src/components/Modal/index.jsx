@@ -1,10 +1,9 @@
-import { Backdrop, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
-import React from 'react';
-import { ModalHero, ContainerHeroes, HabilityHero, ContainerHeroImage, ArrowDropUpIconGreen, ArrowDropDownIconRed } from './styles.jsx';
+import { Backdrop, Box, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import propTypes from 'prop-types';
+import React from 'react';
+import { ArrowDropDownIconRed, ArrowDropUpIconGreen, ContainerHeroImage, ContainerHeroes, HabilityHero, ModalHero, ModalTitle } from './styles.jsx';
 
 function Modal({ openModal, handleCloseModal }) {
-
   const arrayNumbers = [0, 1, 2, 3, 4, 5];
   const abilities = ['intelligence', 'strength', 'speed', 'durability', 'power', 'combat'];
   const heroOneInfo = JSON.parse(localStorage.getItem('hero1'));
@@ -44,29 +43,26 @@ function Modal({ openModal, handleCloseModal }) {
     <>
       {(openModal) &&
         <Backdrop
-          sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          sx={{ color: 'rgba(245, 245, 245, 0.9)', zIndex: (theme) => theme.zIndex.drawer + 1 }}
           open={openModal}
           onClick={handleCloseModal}
         >
           <ModalHero>
-
-            <Typography variant="h3" align="center" mb={5}>
-              Winner {combat(sumPowerStatsHeroOne(), sumPowerStatsHeroTwo())}
-            </Typography>
-
+            <ModalTitle variant="h2" align="center" mb={5}>
+              <Box component="span" sx={{ color: '#00FF00', fontSize: '2.5rem', fontWeight: 700 }}>
+                Winner: </Box>
+              {combat(sumPowerStatsHeroOne(), sumPowerStatsHeroTwo())}
+            </ModalTitle>
             <ContainerHeroes>
-
               <ContainerHeroImage>
-                <img src={heroOneInfo.images.sm} alt="heroi" />
-                <Typography variant="subtitle1">
+                <img src={heroOneInfo.images.sm} alt="heroi" style={{ width: 250 }} />
+                <Typography variant="subtitle1" sx={{ fontSize: '1.125rem' }}>
                   {heroOneInfo.name}
                 </Typography>
               </ContainerHeroImage>
-
               <Grid container>
-                <Grid item sx={{ width: '100%' }}>
-                  <List sx={{ padding: 4 }}>
-
+                <Grid item mt={5} sx={{ width: '100%' }}>
+                  <List sx={{ width: '100%', padding: '32px 56px' }}>
                     {arrayNumbers.map((number) =>
                       <ListItem sx={{ padding: 0 }} key={number.toString()} value={number}>
                         <HabilityHero>
@@ -79,12 +75,10 @@ function Modal({ openModal, handleCloseModal }) {
                               : <ArrowDropDownIconRed />}
                           </ListItemIcon>
                         </HabilityHero>
-
                         <ListItemText
                           primary={firstLetterCapitalize(abilities[number])}
                           sx={{ textAlign: 'center' }}
                         />
-
                         <HabilityHero>
                           <ListItemIcon sx={{ minWidth: 24 }}>
                             {heroTwoInfo.powerstats[abilities[number]] > heroOneInfo.powerstats[abilities[number]]
@@ -95,20 +89,17 @@ function Modal({ openModal, handleCloseModal }) {
                             primary={heroTwoInfo.powerstats[abilities[number]]}
                           />
                         </HabilityHero>
-
                       </ListItem>
                     )}
                   </List>
                 </Grid>
               </Grid>
-
               <ContainerHeroImage>
-                <img src={heroTwoInfo.images.sm} alt="heroi" />
-                <Typography variant="subtitle1" align="right">
+                <img src={heroTwoInfo.images.sm} alt="heroi" style={{ width: 250 }} />
+                <Typography variant="subtitle1" align="right" sx={{ fontSize: '1.125rem' }}>
                   {heroTwoInfo.name}
                 </Typography>
               </ContainerHeroImage>
-
             </ContainerHeroes>
           </ModalHero>
         </Backdrop >}
